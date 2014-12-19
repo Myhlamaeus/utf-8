@@ -57,10 +57,25 @@ const utf8 = Object.freeze({
 
         const flags = (1 << length + 1) - 1;
         return ((bytes[0] >> (7 - length)) & flags) === (flags - 1);
+    },
+    "fromChr": function(chr) {
+        if(chr.length !== 1) {
+            throw new TypeError("utf8.fromChr: Character must have a length of 1");
+        }
+
+        return this.fromCodePoint(chr.charCodeAt(0));
+    },
+    "toChr": function(bytes) {
+        return String.fromCharCode(this.toCodePoint(bytes));
+    },
+    "fromString": function(string) {
+        return string.toArray().map(this.fromChr.bind(this));
+    },
+    "toString": function(bytes) {
+        return bytes.map(this.toChr.bind(this));
     }
 });
 
 Object.freeze(utf8.prototype);
-Object.freeze(utf8);
 
 export default utf8;
