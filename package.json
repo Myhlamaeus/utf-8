@@ -1,0 +1,25 @@
+{
+  "name": "utf-8",
+  "version": "0.2.0",
+  "description": "utf-8\r =======",
+  "main": "utf-8.es",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ileri/utf-8.git"
+  },
+  "keywords": [
+    "utf-8",
+    "unicode",
+    "encoding",
+    "string"
+  ],
+  "author": "Malte-Maurice Dreyer <dreyer.maltem@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ileri/utf-8/issues"
+  },
+  "homepage": "https://github.com/ileri/utf-8"
+}
