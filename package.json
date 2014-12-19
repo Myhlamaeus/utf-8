@@ -28,6 +28,8 @@
     "grunt-mocha": "^0.4.11",
     "jshint-stylish": "^1.0.0",
     "load-grunt-tasks": "^1.0.0",
-    "time-grunt": "^1.0.0"
-  }
+    "time-grunt": "^1.0.0",
+    "traceur": "0.0.79"
+  },
+  "dependencies": {}
 }
