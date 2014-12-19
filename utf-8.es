@@ -1,30 +1,39 @@
 "use strict";
 
-const utf8 = Object.freeze({
+const utf8 = {
     "fromCodePoint": function(codePoint) {
+        if(typeof(codePoint) !== "number") {
+            throw new TypeError("utf8.fromCodePoint: Code point has to be a number");
+        }
+
+        if(codePoint < 0) {
+            throw new RangeError("utf8.fromCodePoint: Code point can not be lower than 0");
+        }
+
         if(codePoint > 0x1FFFFF) {
-            throw new TypeError("utf8.fromCodePoint: Code point can not be larger than 0x1FFFFF");
+            throw new RangeError("utf8.fromCodePoint: Code point can not be higher than 0x1FFFFF");
         }
 
         if(codePoint <= 0x7F) {
             return [codePoint];
         }
 
-        const bytes = [];
+        const bytesLength = codePoint > 0xffff ? 4 : (codePoint > 0x7ff ? 3 : 2),
+            bytes = new Array(bytesLength);
 
-        while(codePoint > 0b11111) {
-            bytes.push(0b10000000 | (0b111111 & codePoint));
+        for(let i = bytesLength - 1; i >= 1; --i) {
+            bytes[i] = (0b10000000 | (0b111111 & codePoint));
             codePoint = codePoint >> 6;
         }
-        bytes.push((((1 << (bytes.length + 1)) - 1) << 7 - bytes.length) | codePoint);
+        bytes[0] = (((1 << (bytesLength)) - 1) << 8 - bytesLength) | codePoint;
 
-        return bytes.reverse();
+        return bytes;
     },
     "toCodePoint": function(bytes) {
         var codePoint;
 
-        if(!this.validate(utf8)) {
-            throw new TypeError("utf8.toCodePoint: Invalid utf8 array supplied");
+        if(!this.validate(bytes)) {
+            throw new Error("utf8.toCodePoint: Invalid utf8 array supplied");
         }
 
         const length = bytes.length;
@@ -48,11 +57,11 @@ const utf8 = Object.freeze({
         }
 
         if(length === 1) {
-            return (bytes[0] & 0b1) === 0b1;
+            return bytes[0] >> 7 === 0;
         }
 
         for(let i = 1; i < length; ++i) {
-            if((bytes[i] & 0b11) === 0b10) {
+            if((bytes[i] >> 6) !== 0b10) {
                 return false;
             }
         }
@@ -76,8 +85,6 @@ const utf8 = Object.freeze({
     "toString": function(bytes) {
         return bytes.map(this.toChr.bind(this));
     }
-});
-
-Object.freeze(utf8.prototype);
+};
 
 export default utf8;
