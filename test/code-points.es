@@ -1,8 +1,7 @@
 import utf8 from "../utf-8.es";
 
-const assert = require("assert");
-
-const pairs = [
+const assert = require("assert"),
+    pairs = [
         [0, [0]],
         [0x00007f, [0b01111111]],
         [0x000080, [0b11000010, 0b10000000]],
@@ -10,7 +9,7 @@ const pairs = [
         [0x000800, [0b11100000, 0b10100000, 0b10000000]],
         [0x00ffff, [0b11101111, 0b10111111, 0b10111111]],
         [0x010000, [0b11110000, 0b10010000, 0b10000000, 0b10000000]],
-        [0x1fffff, [0b11110111, 0b10111111, 0b10111111, 0b10111111]]
+        [0x10ffff, [0b11110100, 0b10001111, 0b10111111, 0b10111111]]
     ],
     invalidUtf8Tuples = [
         [
@@ -47,9 +46,9 @@ describe("Code Points", function() {
             }, RangeError);
         });
 
-        it(`throws if code point higher than 0x1FFFFF`, function() {
+        it(`throws if code point higher than 0x10FFFF`, function() {
             assert.throws(function() {
-                utf8.fromCodePoint(0x200000);
+                utf8.fromCodePoint(0x110000);
             }, RangeError);
         });
     });

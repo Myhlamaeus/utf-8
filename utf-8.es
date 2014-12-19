@@ -10,8 +10,8 @@ const utf8 = {
             throw new RangeError("utf8.fromCodePoint: Code point can not be lower than 0");
         }
 
-        if(codePoint > 0x1FFFFF) {
-            throw new RangeError("utf8.fromCodePoint: Code point can not be higher than 0x1FFFFF");
+        if(codePoint > 0x10FFFF) {
+            throw new RangeError("utf8.fromCodePoint: Code point can not be higher than 0x10FFFF");
         }
 
         if(codePoint <= 0x7F) {
