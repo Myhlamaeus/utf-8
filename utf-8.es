@@ -1,3 +1,5 @@
+"use strict";
+
 const utf8 = Object.freeze({
     "fromCodePoint": function(codePoint) {
         if(codePoint > 0x1FFFFF) {
