@@ -60,6 +60,12 @@ describe("Code Points", function() {
             });
         }
 
+        it(`works for Array and Uint8Array`, function() {
+            for(let pair of pairs) {
+                assert.equal(utf8.toCodePoint(new Uint8Array(pair[1])), pair[0]);
+            }
+        });
+
         it(`throws if not an array`, function() {
             assert.throws(function() {
                 utf8.toCodePoint();
