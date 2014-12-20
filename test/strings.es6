@@ -1,6 +1,23 @@
 import utf8 from "../utf-8.es6";
+import stringToCodePointArray from "../bower_components/string-to-code-point-array/string-to-code-point-array.es6";
 
-const assert = require("assert"),
+const padHex = function(str) {
+        if(str.length < 2) {
+            return "0".repeat(2 - str.length) + str;
+        }
+        return str;
+    },
+    arrayToHex = function(arr) {
+        if(Array.isArray(arr[0]) || arr[0] instanceof Uint8Array) {
+            return Array.from(arr).map(arrayToHex).join(", ");
+        }
+
+        return Array.from(arr).map((codePoint) => codePoint.toString(16).split("").reverse().join("").match(/[0-9a-f]{1,2}/ig).map((pair) => pair.split("").reverse().join("")).reverse().map(padHex).join(" ")).join(" ");
+    },
+    stringToHex = function(str) {
+        return arrayToHex(stringToCodePointArray(str));
+    },
+    assert = require("assert"),
     chrPairs = [
         ["\u0000", utf8.fromCodePoint(0x000000)],
         ["\u007F", utf8.fromCodePoint(0x00007F)],
@@ -25,7 +42,7 @@ const assert = require("assert"),
 describe("Strings", function() {
     describe("#fromChr()", function() {
         for(let pair of chrPairs) {
-            it(`${pair[0].codePointAt(0).toString(16)} -> ${Array.from(pair[1]).map((ele) => ele.toString(16)).join(" ")}`, function() {
+            it(`${stringToHex(pair[0])} -> ${arrayToHex(pair[1])}`, function() {
                 assert.deepEqual(utf8.fromChr(pair[0]), pair[1]);
             });
         }
@@ -66,7 +83,7 @@ describe("Strings", function() {
 
     describe("#toChr()", function() {
         for(let pair of chrPairs) {
-            it(`${Array.from(pair[1]).map((ele) => ele.toString(16)).join(" ")} -> ${pair[0].codePointAt(0).toString(16)}`, function() {
+            it(`${arrayToHex(pair[1])} -> ${stringToHex(pair[0])}`, function() {
                 assert.equal(utf8.toChr(pair[1]), pair[0]);
             });
         }
@@ -74,7 +91,7 @@ describe("Strings", function() {
 
     describe("#parse()", function() {
         for(let pair of strPairs) {
-            it(`${pair[0].split("").map((chr) => chr.codePointAt(0).toString(16)).join("")} -> ${Array.from(pair[1]).map((ele) => Array.from(ele).map((ele) => ele.toString(16))).join(" ")}`, function() {
+            it(`${stringToHex(pair[0])} -> ${arrayToHex(pair[1])}`, function() {
                 assert.deepEqual(utf8.parse(pair[0]), pair[1]);
             });
         }
@@ -82,7 +99,7 @@ describe("Strings", function() {
 
     describe("#stringify()", function() {
         for(let pair of strPairs) {
-            it(`${Array.from(pair[1]).map((ele) => Array.from(ele).map((ele) => ele.toString(16))).join(" ")} -> ${pair[0].split("").map((chr) => chr.codePointAt(0).toString(16)).join("")}`, function() {
+            it(`${arrayToHex(pair[1])} -> ${stringToHex(pair[0])}`, function() {
                 assert.equal(utf8.stringify(pair[1]), pair[0]);
             });
         }
