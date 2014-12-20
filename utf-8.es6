@@ -74,10 +74,10 @@ const utf8 = {
             throw new TypeError("utf8.fromChr: Character must have a length of 1");
         }
 
-        return this.fromCodePoint(chr.charCodeAt(0));
+        return this.fromCodePoint(chr.codePointAt(0));
     },
     "toChr": function(bytes) {
-        return String.fromCharCode(this.toCodePoint(bytes));
+        return String.fromCodePoint(this.toCodePoint(bytes));
     },
     "fromString": function(string) {
         return string.toArray().map(this.fromChr.bind(this));
