@@ -60,17 +60,35 @@ describe("Code Points", function() {
             });
         }
 
+        it(`throws if not an array`, function() {
+            assert.throws(function() {
+                utf8.toCodePoint();
+            }, TypeError);
+            assert.throws(function() {
+                utf8.toCodePoint(0);
+            }, TypeError);
+            assert.throws(function() {
+                utf8.toCodePoint(null);
+            }, TypeError);
+            assert.throws(function() {
+                utf8.toCodePoint({});
+            }, TypeError);
+            assert.throws(function() {
+                utf8.toCodePoint("");
+            }, TypeError);
+        });
+
         it(`throws if empty array`, function() {
             assert.throws(function() {
                 utf8.toCodePoint([]);
-            });
-        }, Error);
+            }, Error);
+        });
 
         it(`throws if array element negative`, function() {
             assert.throws(function() {
                 utf8.toCodePoint([-1]);
-            });
-        }, Error);
+            }, Error);
+        });
 
         for(let i = 0, length = invalidUtf8Tuples.length; i < length; ++i) {
             for(let tuple of invalidUtf8Tuples[i]) {
