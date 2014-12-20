@@ -12,8 +12,6 @@ const assert = require("assert"),
         [String.fromCodePoint(0x10FFFF), utf8.fromCodePoint(0x10FFFF)]
     ];
 
-console.log(pairs[7][0].codePointAt(0));
-
 describe("Strings", function() {
     describe("#fromChr()", function() {
         for(let pair of pairs) {
