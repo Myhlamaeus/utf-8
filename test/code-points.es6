@@ -1,3 +1,5 @@
+"use strict";
+
 import utf8 from "../utf-8.es6";
 
 const assert = require("assert"),
@@ -106,4 +108,4 @@ describe("Code Points", function() {
             }
         }
     });
-})
+});
