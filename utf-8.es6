@@ -33,6 +33,10 @@ const bmpEnd = 0xffff,
     "toCodePoint": function(bytes) {
         var codePoint;
 
+        if(!Array.isArray(bytes)) {
+            throw new TypeError("utf8.toCodePoint: Expects array");
+        }
+
         if(!this.validate(bytes)) {
             throw new Error("utf8.toCodePoint: Invalid utf8 array supplied");
         }
