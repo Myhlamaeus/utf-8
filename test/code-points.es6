@@ -1,36 +1,36 @@
 import utf8 from "../utf-8.es6";
 
 const assert = require("assert"),
-pairs = [
-[0,         new Uint8Array([0])],
-[0x00007f,  new Uint8Array([0b01111111])],
-[0x000080,  new Uint8Array([0b11000010, 0b10000000])],
-[0x0007ff,  new Uint8Array([0b11011111, 0b10111111])],
-[0x000800,  new Uint8Array([0b11100000, 0b10100000, 0b10000000])],
-[0x00ffff,  new Uint8Array([0b11101111, 0b10111111, 0b10111111])],
-[0x010000,  new Uint8Array([0b11110000, 0b10010000, 0b10000000, 0b10000000])],
-[0x10ffff,  new Uint8Array([0b11110100, 0b10001111, 0b10111111, 0b10111111])]
-],
-invalidUtf8Tuples = [
-[
-new Uint8Array([0b01111111, 0b10000000])
-], [
-new Uint8Array([0b11000000]),
-new Uint8Array([0b11000000, 0b00000000]),
-new Uint8Array([0b11000000, 0b10000000, 0b10000000])
-], [
-new Uint8Array([0b11100000]),
-new Uint8Array([0b11100000, 0b10000000]),
-new Uint8Array([0b11100000, 0b10000000, 0b00000000]),
-new Uint8Array([0b11100000, 0b10000000, 0b10000000, 0b10000000])
-], [
-new Uint8Array([0b11110000]),
-new Uint8Array([0b11110000, 0b10000000]),
-new Uint8Array([0b11110000, 0b10000000, 0b10000000]),
-new Uint8Array([0b11110000, 0b10000000, 0b10000000, 0b00000000]),
-new Uint8Array([0b11110000, 0b10000000, 0b10000000, 0b10000000, 0b10000000])
-]
-];
+    pairs = [
+        [0,         new Uint8Array([0])],
+        [0x00007f,  new Uint8Array([0b01111111])],
+        [0x000080,  new Uint8Array([0b11000010, 0b10000000])],
+        [0x0007ff,  new Uint8Array([0b11011111, 0b10111111])],
+        [0x000800,  new Uint8Array([0b11100000, 0b10100000, 0b10000000])],
+        [0x00ffff,  new Uint8Array([0b11101111, 0b10111111, 0b10111111])],
+        [0x010000,  new Uint8Array([0b11110000, 0b10010000, 0b10000000, 0b10000000])],
+        [0x10ffff,  new Uint8Array([0b11110100, 0b10001111, 0b10111111, 0b10111111])]
+    ],
+    invalidUtf8Tuples = [
+        [
+            new Uint8Array([0b01111111, 0b10000000])
+        ], [
+            new Uint8Array([0b11000000]),
+            new Uint8Array([0b11000000, 0b00000000]),
+            new Uint8Array([0b11000000, 0b10000000, 0b10000000])
+        ], [
+            new Uint8Array([0b11100000]),
+            new Uint8Array([0b11100000, 0b10000000]),
+            new Uint8Array([0b11100000, 0b10000000, 0b00000000]),
+            new Uint8Array([0b11100000, 0b10000000, 0b10000000, 0b10000000])
+        ], [
+            new Uint8Array([0b11110000]),
+            new Uint8Array([0b11110000, 0b10000000]),
+            new Uint8Array([0b11110000, 0b10000000, 0b10000000]),
+            new Uint8Array([0b11110000, 0b10000000, 0b10000000, 0b00000000]),
+            new Uint8Array([0b11110000, 0b10000000, 0b10000000, 0b10000000, 0b10000000])
+        ]
+    ];
 
 describe("Code Points", function() {
     describe("#fromCodePoint()", function() {
