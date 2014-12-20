@@ -6,11 +6,9 @@ const bmpEnd = 0xffff,
             if(typeof(codePoint) !== "number") {
                 throw new TypeError("utf8.fromCodePoint: Code point has to be a number");
             }
-
             if(codePoint < 0) {
                 throw new RangeError("utf8.fromCodePoint: Code point can not be lower than 0");
             }
-
             if(codePoint > 0x10FFFF) {
                 throw new RangeError("utf8.fromCodePoint: Code point can not be higher than 0x10FFFF");
             }
@@ -36,7 +34,6 @@ const bmpEnd = 0xffff,
             if(!Array.isArray(bytes) && !(bytes instanceof Uint8Array)) {
                 throw new TypeError("utf8.toCodePoint: Expects Array or Uint8Array");
             }
-
             if(!this.validate(bytes)) {
                 throw new Error("utf8.toCodePoint: Invalid utf8 array supplied");
             }
@@ -46,8 +43,8 @@ const bmpEnd = 0xffff,
             if(length === 1) {
                 return bytes[0];
             }
-            codePoint = (bytes[0] & ((1 << (8 - length)) - 1)) << ((length - 1) * 6);
 
+            codePoint = (bytes[0] & ((1 << (8 - length)) - 1)) << ((length - 1) * 6);
             for(let i = 1; i < length; ++i) {
                 codePoint += (bytes[i] & ((1 << 7) - 1)) << ((length - i - 1) * 6);
             }
