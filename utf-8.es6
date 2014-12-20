@@ -85,10 +85,10 @@ const bmpEnd = 0xffff,
         "toChr": function(bytes) {
             return String.fromCodePoint(this.toCodePoint(bytes));
         },
-        "fromString": function(string) {
+        "parse": function(string) {
             return string.toArray().map(this.fromChr.bind(this));
         },
-        "toString": function(bytes) {
+        "stringify": function(bytes) {
             return bytes.map(this.toChr.bind(this));
         }
     };
