@@ -7,10 +7,12 @@ const assert = require("assert"),
         ["\u0080", utf8.fromCodePoint(0x000080)],
         ["\u07FF", utf8.fromCodePoint(0x0007FF)],
         ["\u0800", utf8.fromCodePoint(0x000800)],
-        ["\uFFFF", utf8.fromCodePoint(0x00FFFF)]/*,
-        ["\u{010000}", utf8.fromCodePoint(0x010000)],
-        ["\u{10FFFF}", utf8.fromCodePoint(0x10FFFF)]*/
+        ["\uFFFF", utf8.fromCodePoint(0x00FFFF)],
+        [String.fromCodePoint(0x010000), utf8.fromCodePoint(0x010000)],
+        [String.fromCodePoint(0x10FFFF), utf8.fromCodePoint(0x10FFFF)]
     ];
+
+console.log(pairs[7][0].codePointAt(0));
 
 describe("Strings", function() {
     describe("#fromChr()", function() {
