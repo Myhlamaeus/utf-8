@@ -9,7 +9,6 @@
     "esnext": true,
     "indent": 4,
     "latedef": true,
-    "maxcomplexity": 6,
     "maxdepth": 4,
     "maxstatements": 15,
     "newcap": true,
