@@ -1,6 +1,6 @@
 {
   "name": "utf-8",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "description": "utf-8\r =======",
   "main": "utf-8.es6",
   "scripts": {
