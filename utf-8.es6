@@ -75,8 +75,8 @@ const bmpEnd = 0xffff,
             throw new TypeError("utf8.fromChr: Expects argument 0 to be a string");
         }
 
-        if(chr.length && (chr.codePointAt(0) <= bmpEnd ? chr.length !== 1 : chr.length !== 2)) {
-            throw new Error("utf8.fromChr: Character must have a length of 1");
+        if(!chr.length || (chr.codePointAt(0) <= bmpEnd ? chr.length !== 1 : chr.length !== 2)) {
+            throw new RangeError("utf8.fromChr: Character must have a length of 1");
         }
 
         return this.fromCodePoint(chr.codePointAt(0));
