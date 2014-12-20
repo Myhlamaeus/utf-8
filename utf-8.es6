@@ -1,6 +1,7 @@
 "use strict";
 
-const utf8 = {
+const bmpEnd = 0xffff,
+    utf8 = {
     "fromCodePoint": function(codePoint) {
         if(typeof(codePoint) !== "number") {
             throw new TypeError("utf8.fromCodePoint: Code point has to be a number");
@@ -18,7 +19,7 @@ const utf8 = {
             return [codePoint];
         }
 
-        const bytesLength = codePoint > 0xffff ? 4 : (codePoint > 0x7ff ? 3 : 2),
+        const bytesLength = codePoint > bmpEnd ? 4 : (codePoint > 0x7ff ? 3 : 2),
             bytes = new Array(bytesLength);
 
         for(let i = bytesLength - 1; i >= 1; --i) {
@@ -70,7 +71,7 @@ const utf8 = {
         return ((bytes[0] >> (7 - length)) & flags) === (flags - 1);
     },
     "fromChr": function(chr) {
-        if(chr.length !== 1) {
+        if(chr.length && (chr.codePointAt(0) <= bmpEnd ? chr.length !== 1 : chr.length !== 2)) {
             throw new TypeError("utf8.fromChr: Character must have a length of 1");
         }
 
