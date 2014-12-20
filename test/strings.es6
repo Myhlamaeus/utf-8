@@ -56,7 +56,7 @@ describe("Strings", function() {
 
     describe("#toChr()", function() {
         for(let pair of pairs) {
-            it(`${ype.map.call(pair[1], (ele) => ele.toString(16)).join(" ")} -> ${pair[0].codePointAt(0).toString(16)}`, function() {
+            it(`${Array.from(pair[1]).map((ele) => ele.toString(16)).join(" ")} -> ${pair[0].codePointAt(0).toString(16)}`, function() {
                 assert.equal(utf8.toChr(pair[1]), pair[0]);
             });
         }
