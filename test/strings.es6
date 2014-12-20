@@ -17,7 +17,7 @@ console.log(pairs[7][0].codePointAt(0));
 describe("Strings", function() {
     describe("#fromChr()", function() {
         for(let pair of pairs) {
-            it(`${pair[0].codePointAt(0).toString(16)} -> ${pair[1].map((ele) => ele.toString(16)).join(" ")}`, function() {
+            it(`${pair[0].codePointAt(0).toString(16)} -> ${Array.from(pair[1]).map((ele) => ele.toString(16)).join(" ")}`, function() {
                 assert.deepEqual(utf8.fromChr(pair[0]), pair[1]);
             });
         }
@@ -58,7 +58,7 @@ describe("Strings", function() {
 
     describe("#toChr()", function() {
         for(let pair of pairs) {
-            it(`${pair[1].map((ele) => ele.toString(16)).join(" ")} -> ${pair[0].codePointAt(0).toString(16)}`, function() {
+            it(`${ype.map.call(pair[1], (ele) => ele.toString(16)).join(" ")} -> ${pair[0].codePointAt(0).toString(16)}`, function() {
                 assert.equal(utf8.toChr(pair[1]), pair[0]);
             });
         }

@@ -16,7 +16,7 @@ const bmpEnd = 0xffff,
         }
 
         if(codePoint <= 0x7F) {
-            return [codePoint];
+            return new Uint8Array([codePoint]);
         }
 
         const bytesLength = codePoint > bmpEnd ? 4 : (codePoint > 0x7ff ? 3 : 2),
@@ -28,7 +28,7 @@ const bmpEnd = 0xffff,
         }
         bytes[0] = (((1 << (bytesLength)) - 1) << 8 - bytesLength) | codePoint;
 
-        return bytes;
+        return new Uint8Array(bytes);
     },
     "toCodePoint": function(bytes) {
         var codePoint;
