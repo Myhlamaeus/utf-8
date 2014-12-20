@@ -1,5 +1,7 @@
 "use strict";
 
+import stringToCodePointArray from "./bower_components/string-to-code-point-array/string-to-code-point-array.es6";
+
 const bmpEnd = 0xffff,
     utf8 = {
         "fromCodePoint": function(codePoint) {
@@ -86,7 +88,7 @@ const bmpEnd = 0xffff,
             return String.fromCodePoint(this.toCodePoint(bytes));
         },
         "parse": function(string) {
-            return string.toArray().map(this.fromChr.bind(this));
+            return stringToCodePointArray(string).map(this.fromCodePoint.bind(this));
         },
         "stringify": function(bytes) {
             return bytes.map(this.toChr.bind(this));
