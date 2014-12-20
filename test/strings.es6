@@ -79,4 +79,12 @@ describe("Strings", function() {
             });
         }
     });
+
+    describe("#stringify()", function() {
+        for(let pair of strPairs) {
+            it(`${Array.from(pair[1]).map((ele) => Array.from(ele).map((ele) => ele.toString(16))).join(" ")} -> ${pair[0].split("").map((chr) => chr.codePointAt(0).toString(16)).join("")}`, function() {
+                assert.equal(utf8.stringify(pair[1]), pair[0]);
+            });
+        }
+    });
 });
