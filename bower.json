@@ -6,7 +6,7 @@
     "Malte-Maurice Dreyer <dreyer.maltem@gmail.com>"
   ],
   "description": "Unicode Code Point to UTF-8 / UTF-8 to Unicode Code Point",
-  "main": "utf-8.es",
+  "main": "utf-8.es6",
   "moduleType": [
     "es6"
   ],

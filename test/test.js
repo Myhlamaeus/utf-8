@@ -6,5 +6,5 @@ traceur.require.makeDefault(function(filename) {
 });
 
 ["code-points", "strings"].map(function(file) {
-    return "./" + file + ".es";
+    return "./" + file + ".es6";
 }).forEach(require);

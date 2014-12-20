@@ -1,4 +1,4 @@
-import utf8 from "../utf-8.es";
+import utf8 from "../utf-8.es6";
 
 const assert = require("assert"),
     pairs = [
