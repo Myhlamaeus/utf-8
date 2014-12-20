@@ -91,7 +91,7 @@ const bmpEnd = 0xffff,
             return stringToCodePointArray(string).map(this.fromCodePoint.bind(this));
         },
         "stringify": function(bytes) {
-            return bytes.map(this.toChr.bind(this));
+            return bytes.map(this.toChr.bind(this)).join("");
         }
     };
 
