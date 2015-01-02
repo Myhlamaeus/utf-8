@@ -1,6 +1,6 @@
 "use strict";
 
-const traceur = require("traceur");
+var traceur = require("traceur");
 
 traceur.require.makeDefault(function(filename) {
     // don't transpile our dependencies, just our app
@@ -8,5 +8,5 @@ traceur.require.makeDefault(function(filename) {
 });
 
 ["code-points", "strings"].map(function(file) {
-    return "./" + file + ".es6";
+    return "./" + file;
 }).forEach(require);

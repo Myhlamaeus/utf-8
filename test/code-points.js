@@ -1,6 +1,6 @@
 "use strict";
 
-import utf8 from "../utf-8.es6";
+import utf8 from "../utf-8";
 
 const assert = require("assert"),
     pairs = [
