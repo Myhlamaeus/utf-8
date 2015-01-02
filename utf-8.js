@@ -1,5 +1,3 @@
-"use strict";
-
 import stringToCodePointArray from "./bower_components/string-to-code-point-array/string-to-code-point-array.es6";
 
 const bmpEnd = 0xffff,

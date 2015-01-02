@@ -1,5 +1,3 @@
-"use strict";
-
 import utf8 from "../utf-8";
 import stringToCodePointArray from "../bower_components/string-to-code-point-array/string-to-code-point-array.es6";
 
