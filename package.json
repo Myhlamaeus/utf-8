@@ -35,5 +35,8 @@
   "scripts": {
     "prepublish": "grunt build:cjs",
     "test": "grunt test"
+  },
+  "dependencies": {
+    "string-to-code-point-array": "^0.2.0"
   }
 }
