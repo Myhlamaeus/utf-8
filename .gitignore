@@ -28,5 +28,7 @@ bower_components
 # Users Environment Variables
 .lock-wscript
 
-# tests
+# `grunt test` errors
 errors.txt
+
+dist
