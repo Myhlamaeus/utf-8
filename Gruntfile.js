@@ -1,31 +1,27 @@
-/*jshint node:true*/
+/* jshint node:true */
 
-// Generated on <%= (new Date).toISOString().split("T")[0] %> using
-// <%= pkg.name %> <%= pkg.version %>
 "use strict";
 
-// # Globbing
-// for performance reasons we"re only matching one level down:
-// "test/spec/{,*/}*.js"
-// If you want to recursively match all subfolders, use:
-// "test/spec/**/*.js"
-
 module.exports = function (grunt) {
-
-    // Time how long tasks take. Can help when optimizing build times
+    // Show elapsed time at the end
     require("time-grunt")(grunt);
-
-    // Load grunt tasks automatically
+    // Load all grunt tasks
     require("load-grunt-tasks")(grunt);
 
-    // Define the configuration for all the tasks
+    // Project configuration.
     grunt.initConfig({
+        "config": {
+            "main": "utf-8",
+            "global": "utf8"
+        },
         "watch": {
+            "gruntfile": {
+                "files": "<%= jshint.gruntfile.src %>",
+                "tasks": ["jshint:gruntfile"]
+            },
             "js": {
-                "files": [
-                    "utf-8.js"
-                ],
-                "tasks": ["jshint"]
+                "files": "<%= config.main %>.js",
+                "tasks": ["jshint:main", "nodeunit"]
             },
             "jstest": {
                 "files": ["test/{,*/}*.js"],
@@ -37,10 +33,11 @@ module.exports = function (grunt) {
                 "jshintrc": ".jshintrc",
                 "reporter": require("jshint-stylish")
             },
-            "all": [
-                "Gruntfile.js",
-                "utf-8.js",
-                "index.js"
+            "gruntfile": {
+                "src": "Gruntfile.js"
+            },
+            "main": [
+                "<%= config.main %>.js"
             ],
             "test": {
                 "options": {
@@ -62,7 +59,5 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.task.registerTask("test", function() {
-        grunt.task.run("jshint:all", "jshint:test", "mochaTest");
-    });
+    grunt.registerTask("test", ["jshint", "mochaTest"]);
 };
