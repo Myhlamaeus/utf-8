@@ -1,12 +1,6 @@
 "use strict";
 
-var traceur = require("traceur");
-
-traceur.require.makeDefault(function(filename) {
-    // don't transpile our dependencies, just our app
-    return filename.indexOf("node_modules") === -1;
-});
-
+require("babel/register");
 ["code-points", "strings"].map(function(file) {
     return "./" + file;
 }).forEach(require);
