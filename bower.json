@@ -1,14 +1,17 @@
 {
   "name": "utf-8",
+  "description": "utf-8\r =======",
   "version": "0.8.0",
-  "homepage": "https://github.com/ileri/utf-8",
   "authors": [
-    "Malte-Maurice Dreyer <dreyer.maltem@gmail.com>"
+    "Malte-Maurice Dreyer <dreyer.maltem+dev@gmail.com>"
   ],
-  "description": "Unicode Code Point to UTF-8 / UTF-8 to Unicode Code Point",
-  "main": "utf-8.es6",
-  "moduleType": [
-    "es6"
+  "homepage": "https://github.com/ileri/utf-8",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
   ],
   "keywords": [
     "unicode",
@@ -17,11 +20,8 @@
     "string"
   ],
   "license": "GPL-3.0",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
+  "main": "utf-8.es6",
+  "moduleType": [
+    "es6"
   ]
 }
