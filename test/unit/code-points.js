@@ -1,6 +1,6 @@
 /* global it, describe */
 
-import * as utf8 from '../utf-8'
+import * as utf8 from '../../utf-8'
 
 const assert = require('assert')
 const pairs = [
