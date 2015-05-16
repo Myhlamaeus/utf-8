@@ -28,26 +28,6 @@ module.exports = function (grunt) {
                 "tasks": ["jshint", "mocha"]
             }
         },
-        "jshint": {
-            "options": {
-                "jshintrc": ".jshintrc",
-                "reporter": require("jshint-stylish")
-            },
-            "gruntfile": {
-                "src": "Gruntfile.js"
-            },
-            "main": [
-                "<%= config.main %>.js"
-            ],
-            "test": {
-                "options": {
-                    "jshintrc": "test/.jshintrc"
-                },
-                "files": {
-                    "src": ["test/{,*/}*.js"]
-                }
-            }
-        },
         "mochaTest": {
             "test": {
                 "options": {
@@ -101,7 +81,7 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask("test", ["jshint", "mochaTest"]);
+    grunt.registerTask("test", ["mochaTest"]);
 
     grunt.task.registerTask("build:es6", ["uglify:dist"]);
     grunt.task.registerTask("build:cjs", ["babel:dist"]);
