@@ -20,7 +20,7 @@
     "string"
   ],
   "license": "MIT",
-  "main": "utf-8.es6",
+  "main": "utf-8.js",
   "moduleType": [
     "es6"
   ]
