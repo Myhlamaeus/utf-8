@@ -19,7 +19,7 @@
     "encoding",
     "string"
   ],
-  "license": "GPL-3.0",
+  "license": "MIT",
   "main": "utf-8.es6",
   "moduleType": [
     "es6"

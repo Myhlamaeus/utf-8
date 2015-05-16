@@ -24,7 +24,7 @@
     "unicode",
     "utf-8"
   ],
-  "license": "GPL-3.0",
+  "license": "MIT",
   "main": "dist/utf-8.js",
   "repository": {
     "type": "git",
