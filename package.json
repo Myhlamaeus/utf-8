@@ -1,7 +1,7 @@
 {
   "name": "utf-8",
   "description": "Convert to and from UTF-8 encoding",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "author": "Malte-Maurice Dreyer <dreyer.maltem+dev@gmail.com>",
   "bugs": {
     "url": "https://github.com/ileri/utf-8/issues"
