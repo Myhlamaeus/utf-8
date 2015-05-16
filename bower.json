@@ -1,6 +1,6 @@
 {
   "name": "utf-8",
-  "description": "utf-8\r =======",
+  "description": "Convert to and from UTF-8 encoding",
   "version": "0.8.0",
   "authors": [
     "Malte-Maurice Dreyer <dreyer.maltem+dev@gmail.com>"

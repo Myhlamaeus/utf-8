@@ -1,1 +1,2 @@
 # utf-8 [![Build Status](https://travis-ci.org/ileri/utf-8.svg?branch=master)](https://travis-ci.org/ileri/utf-8) [![Code Climate](https://codeclimate.com/github/ileri/utf-8/badges/gpa.svg)](https://codeclimate.com/github/ileri/utf-8) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+> Convert to and from UTF-8 encoding
